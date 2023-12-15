@@ -1,5 +1,4 @@
 using Carter;
-using Catalog.Api.Endpoints;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MediatR;
 using Catalog.Application.Handlers;
@@ -8,7 +7,6 @@ using Catalog.Infrastructure.Data;
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.WebUtilities;
 using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
