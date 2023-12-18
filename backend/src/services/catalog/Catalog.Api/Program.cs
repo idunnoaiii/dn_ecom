@@ -1,45 +1,45 @@
-using Carter;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using MediatR;
-using Catalog.Application.Handlers;
-using System.Reflection;
-using Catalog.Infrastructure.Data;
-using Catalog.Core.Repositories;
-using Catalog.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
+using Catalog.Api.ServiceRegistration.Api;
+using Catalog.Api.ServiceRegistration.Service;
+
+
+using static Catalog.Api.ServiceRegistration.Api.ApiServiceExtension;
+using Catalog.Api.Endpoints.V1_0;
+using Catalog.Api.Endpoints.V2_0;
+using Catalog.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var configuring = builder.Configuration;
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-// builder.Services.AddSwaggerGen(x =>
-// {
-//     x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-//     {
-//         Title = "Catalog.Api",
-//         Version = "v1"
-//     });
-// });
-builder.Services.AddCarter();
+var configuration = builder.Configuration;
 
-builder.Services.AddApiVersioning()
-.AddHealthChecks()
-.AddMongoDb(configuring["DatabaseSettings:ConnectionString"]!, "Catalog Mongo Db Health Check", HealthStatus.Degraded);
+builder.Services.AddApi(configuration);
 
-builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddMediatR(typeof(CreateProductHandler).GetTypeInfo().Assembly);
+// move add infrastucture
+builder.Services
+    .AddHealthChecks()
+    .AddMongoDb(configuration["DatabaseSettings:ConnectionString"]!, "Catalog Mongo Db Health Check", HealthStatus.Degraded);
 
-builder.Services.AddScoped<ICatalogContext, CatalogContext>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IBrandRepository, ProductRepository>();
-builder.Services.AddScoped<ITypeRepository, ProductRepository>();
-
+builder.Services.AddApplicationService(configuration);
 
 var app = builder.Build();
+
+app.UseApi(configuration);
+
+app.MapEndpoints();
+
+// app.MapGet("/version", () => "Hello version 1").WithApiVersionSet(ApiVersionSet).MapToApiVersion(1.0);
+// app.MapGet("/version", () => "Hello version 2").WithApiVersionSet(ApiVersionSet).MapToApiVersion(2.0);
+// app.MapGet("/version2only", () => "Hello version 2 only").WithApiVersionSet(ApiVersionSet).MapToApiVersion(2.0);
+// app.MapGet("/versionneutral", () => "Hello neutral version")
+//     .WithApiVersionSet(ApiVersionSet)
+//     .IsApiVersionNeutral()
+//     .WithOpenApi(operation => new(operation)
+//     {
+//         Summary = "Neutral",
+//         Description = "This endpint is neutral"
+//     });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -47,19 +47,9 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
 //app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 
-app.MapCarter();
-app.MapHealthChecks("/health", new HealthCheckOptions {
-    Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
 
 app.Run();
-

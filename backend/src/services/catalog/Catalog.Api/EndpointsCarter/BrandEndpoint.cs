@@ -1,11 +1,10 @@
+using Asp.Versioning;
 using Carter;
 using Catalog.Application.Queries;
-using Catalog.Application.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.Api.Endpoints;
+namespace Catalog.Api.EndpointsCarter;
 
 public class BrandEndpoint : CarterModule
 {
@@ -19,10 +18,10 @@ public class BrandEndpoint : CarterModule
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
 
-        app.MapGet("/", async ([FromServices] IMediator mediator) =>
-        {
-            var result = await mediator.Send(new GetAllBrandsQuery());
-            return Results.Ok(result);
-        });
+        // app.MapGet("/", async ([FromServices] IMediator mediator) =>
+        // {
+        //     var result = await mediator.Send(new GetAllBrandsQuery());
+        //     return Results.Ok(result);
+        // });
     }
 }

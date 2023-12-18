@@ -2,11 +2,15 @@
 using Carter;
 using Catalog.Application.Commands;
 using Catalog.Application.Queries;
+using Catalog.Core.Specs;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.Api.Endpoints;
+using Catalog.Api.Model.GetAllProduct;
+
+namespace Catalog.Api.EndpointsCarter;
 
 public class ProductEndpoint : CarterModule
 {
@@ -33,10 +37,9 @@ public class ProductEndpoint : CarterModule
             return Results.Ok(result);
         });
 
-        app.MapGet("/", async ([FromServices] IMediator mediator) =>
+        app.MapGet("/", async ([AsParameters] GetAllProductRequest request,[FromServices] IMediator mediator) =>
         {
-
-            var result = await mediator.Send(new GetAllProductsQuery());
+            var result = await mediator.Send(new GetAllProductsQuery(request.Adapt<CatalogSpecParam>()));
             return Results.Ok(result);
         });
 
