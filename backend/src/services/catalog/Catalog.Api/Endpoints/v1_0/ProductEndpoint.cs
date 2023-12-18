@@ -36,6 +36,10 @@ public static class ProductEndpoint
         {
             var result = await mediator.Send(new GetAllProductsQuery(request.Adapt<CatalogSpecParam>()));
             return Results.Ok(result);
+        })
+        .WithOpenApi(op => new (op) 
+        {
+            Summary = "Search products"
         });
 
         group.MapGet("/by/brand/{brand}", async (string brand, [FromServices] IMediator mediator) =>

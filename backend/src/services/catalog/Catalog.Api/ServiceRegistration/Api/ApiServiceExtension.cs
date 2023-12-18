@@ -43,11 +43,9 @@ public static class ApiServiceExtension
 
     public static WebApplication UseApi(this WebApplication app, IConfiguration configuration)
     {
-
-
         app.MapApiVersionSet();
 
-        var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+        // var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
         app
         .UseSwagger()
@@ -61,8 +59,6 @@ public static class ApiServiceExtension
                 //     c.SwaggerEndpoint($"/swagger/{item.GroupName}/swagger.json", item.GroupName.ToUpperInvariant());
                 // }
             });
-
-
 
         return app;
     }
