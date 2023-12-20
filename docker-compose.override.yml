@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+
+  catalogdb:
+    container_name: catalogdb-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - common
+
+  basketdb:
+    container_name: basketdb-redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  catalogapi:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017"
+      - "DatabaseSettings__DatabaseName=CatalogDb"
+    depends_on:
+      - catalogdb
+    ports:
+      - 9000:80
+    networks:
+      - common
+
+  basketapi:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=basketdb:6379"
+    depends_on:
+      - basketdb
+    ports:
+      - 9001:80
+    networks:
+      - common
+
+
+networks:
+  common:
+    name: dn-ecom-network
+  
+
+volumes:
+  mongo_data:

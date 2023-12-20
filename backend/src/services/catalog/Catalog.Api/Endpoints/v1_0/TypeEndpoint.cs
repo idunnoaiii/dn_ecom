@@ -1,4 +1,3 @@
-using Carter;
 using Catalog.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

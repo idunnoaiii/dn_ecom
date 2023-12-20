@@ -9,13 +9,18 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
 WORKDIR /src
 
-COPY ["Catalog.Api/Catalog.Api.csproj", "Catalog.Api/"]
-COPY ["Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Catalog.Infrastructure/"]
-COPY ["Catalog.Core/Catalog.Core.csproj", "Catalog.Core/"]
-COPY ["Catalog.Application/Catalog.Application.csproj", "Catalog.Application/"]
+COPY ["backend/src/services/catalog/Catalog.Api/Catalog.Api.csproj", "Catalog.Api/"]
+COPY ["backend/src/services/catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Catalog.Infrastructure/"]
+COPY ["backend/src/services/catalog/Catalog.Core/Catalog.Core.csproj", "Catalog.Core/"]
+COPY ["backend/src/services/catalog/Catalog.Application/Catalog.Application.csproj", "Catalog.Application/"]
 
 RUN dotnet restore "Catalog.Api/Catalog.Api.csproj"
-COPY . .
+
+COPY ["backend/src/services/catalog/Catalog.Api/", "Catalog.Api/"]
+COPY ["backend/src/services/catalog/Catalog.Infrastructure/", "Catalog.Infrastructure/"]
+COPY ["backend/src/services/catalog/Catalog.Core/", "Catalog.Core/"]
+COPY ["backend/src/services/catalog/Catalog.Application/", "Catalog.Application/"]
+
 WORKDIR "/src/Catalog.Api"
 RUN dotnet build "Catalog.Api.csproj" -c $configuration -o /app/build
 

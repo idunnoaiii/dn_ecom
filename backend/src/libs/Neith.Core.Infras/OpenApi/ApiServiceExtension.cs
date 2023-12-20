@@ -1,19 +1,26 @@
 using Asp.Versioning;
 using Asp.Versioning.Builder;
 using Asp.Versioning.Conventions;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Catalog.Api.ServiceRegistration.Api;
+namespace Neith.Core.Infras.OpenApi;
 
 public static class ApiServiceExtension
 
 {
-    public static IServiceCollection AddApi(this IServiceCollection services, IConfiguration configuration)
+    public static IHostApplicationBuilder AddApi(this IHostApplicationBuilder builder)
     {
-        services.AddEndpointsApiExplorer();
+        
+        builder.Services.AddEndpointsApiExplorer();
 
-        services.AddApiVersioning(options =>
+        builder.Services.AddApiVersioning(options =>
         {
             options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
             options.ReportApiVersions = true;
@@ -26,21 +33,23 @@ public static class ApiServiceExtension
         });
 
         // Open Api
-        services.AddSwaggerGen(options => {
+        builder.Services.AddSwaggerGen(options => {
             options.EnableAnnotations();
             // options.ResolveConflictingActions(option => option.First());//TODO.[thien.nguyen] // workaround
         });
 
 
-        services.AddSingleton<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationsOptions>();
+        builder.Services.AddSingleton<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationsOptions>();
 
         //services.AddCarter();
+        //
+        // builder.Services.AddHealthChecks();
 
-        return services;
+        return builder;
     }
 
 
-    public static WebApplication UseApi(this WebApplication app, IConfiguration configuration)
+    public static WebApplication UseApi(this WebApplication app)
     {
         app.MapApiVersionSet();
 
@@ -58,6 +67,13 @@ public static class ApiServiceExtension
                 //     c.SwaggerEndpoint($"/swagger/{item.GroupName}/swagger.json", item.GroupName.ToUpperInvariant());
                 // }
             });
+        
+
+        app.MapHealthChecks("/health", new HealthCheckOptions
+        {
+            Predicate = _ => true,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
 
         return app;
     }

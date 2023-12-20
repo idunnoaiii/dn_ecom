@@ -1,0 +1,105 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [basketapi internal] load .dockerignore
+#1 transferring context: 383B done
+#1 DONE 0.0s
+
+#2 [basketapi internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.21kB done
+#2 DONE 0.0s
+
+#3 [basketapi internal] load metadata for mcr.microsoft.com/dotnet/aspnet:8.0
+#3 DONE 0.6s
+
+#4 [basketapi internal] load metadata for mcr.microsoft.com/dotnet/sdk:8.0
+#4 DONE 0.6s
+
+#5 [basketapi build  1/13] FROM mcr.microsoft.com/dotnet/sdk:8.0@sha256:0b4b20f78ab869a9fa6a8496053b4e2cb7339b8f748775c8c502f8eb7f2d8576
+#5 DONE 0.0s
+
+#6 [basketapi base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:8.0@sha256:91c325d4dd9f26a457824b1c5d1583e236b7178d85c1367659ee11872ea9aae3
+#6 DONE 0.0s
+
+#7 [basketapi base 2/2] WORKDIR /app
+#7 CACHED
+
+#8 [basketapi final 1/2] WORKDIR /app
+#8 CACHED
+
+#9 [basketapi internal] load build context
+#9 transferring context: 3.25kB 0.0s done
+#9 DONE 0.0s
+
+#10 [basketapi build  5/13] COPY [backend/src/libs/Neith.Core.Infras/Neith.Core.Infras.csproj, libs/Neith.Core.Infras/]
+#10 CACHED
+
+#11 [basketapi build  2/13] WORKDIR /src
+#11 CACHED
+
+#12 [basketapi build  3/13] COPY [backend/src/services/basket/Basket.Api/Basket.Api.csproj, services/basket/Basket.Api/]
+#12 CACHED
+
+#13 [basketapi build  4/13] COPY [backend/src/libs/Neith.Core/Neith.Core.csproj, libs/Neith.Core/]
+#13 CACHED
+
+#14 [basketapi build  6/13] RUN dotnet restore "services/basket/Basket.Api/Basket.Api.csproj"
+#14 CACHED
+
+#15 [basketapi build  7/13] RUN ls
+#15 0.173 libs
+#15 0.173 services
+#15 DONE 0.2s
+
+#16 [basketapi build  8/13] COPY [backend/src/services/basket/Basket.Api/, services/basket/Basket.Api/]
+#16 DONE 0.0s
+
+#17 [basketapi build  9/13] COPY [backend/src/libs/Neith.Core/, libs/Neith.Core/]
+#17 DONE 0.1s
+
+#18 [basketapi build 10/13] COPY [backend/src/libs/Neith.Core.Infras/, libs/Neith.Core.Infras/]
+#18 DONE 0.0s
+
+#19 [basketapi build 11/13] RUN ls
+#19 0.220 libs
+#19 0.220 services
+#19 DONE 0.2s
+
+#20 [basketapi build 12/13] WORKDIR /src/services/basket/Basket.Api
+#20 DONE 0.0s
+
+#21 [basketapi build 13/13] RUN dotnet build "Basket.Api.csproj" -c Release -o /app/build
+#21 0.324 MSBuild version 17.8.3+195e7f5a3 for .NET
+#21 1.100   Determining projects to restore...
+#21 1.776   All projects are up-to-date for restore.
+#21 4.504   Neith.Core.Infras -> /app/build/Neith.Core.Infras.dll
+#21 5.327 /src/services/basket/Basket.Api/Infrastructure/Repository/IBasketRepository.cs(36,48): warning CS8604: Possible null reference argument for parameter 'key' in 'Task DistributedCacheExtensions.SetStringAsync(IDistributedCache cache, string key, string value, CancellationToken token = default(CancellationToken))'. [/src/services/basket/Basket.Api/Basket.Api.csproj]
+#21 5.470   Basket.Api -> /app/build/Basket.Api.dll
+#21 5.485 
+#21 5.487 Build succeeded.
+#21 5.488 
+#21 5.488 /src/services/basket/Basket.Api/Infrastructure/Repository/IBasketRepository.cs(36,48): warning CS8604: Possible null reference argument for parameter 'key' in 'Task DistributedCacheExtensions.SetStringAsync(IDistributedCache cache, string key, string value, CancellationToken token = default(CancellationToken))'. [/src/services/basket/Basket.Api/Basket.Api.csproj]
+#21 5.488     1 Warning(s)
+#21 5.488     0 Error(s)
+#21 5.489 
+#21 5.490 Time Elapsed 00:00:05.06
+#21 DONE 5.6s
+
+#22 [basketapi publish 1/1] RUN dotnet publish "Basket.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+#22 0.345 MSBuild version 17.8.3+195e7f5a3 for .NET
+#22 0.973   Determining projects to restore...
+#22 1.545   All projects are up-to-date for restore.
+#22 2.018   Neith.Core.Infras -> /src/libs/Neith.Core.Infras/bin/Release/net8.0/Neith.Core.Infras.dll
+#22 4.850 /src/services/basket/Basket.Api/Infrastructure/Repository/IBasketRepository.cs(36,48): warning CS8604: Possible null reference argument for parameter 'key' in 'Task DistributedCacheExtensions.SetStringAsync(IDistributedCache cache, string key, string value, CancellationToken token = default(CancellationToken))'. [/src/services/basket/Basket.Api/Basket.Api.csproj]
+#22 5.025   Basket.Api -> /src/services/basket/Basket.Api/bin/Release/net8.0/Basket.Api.dll
+#22 5.113   Basket.Api -> /app/publish/
+#22 DONE 5.2s
+
+#23 [basketapi final 2/2] COPY --from=publish /app/publish .
+#23 DONE 0.1s
+
+#24 [basketapi] exporting to image
+#24 exporting layers
+#24 exporting layers 0.2s done
+#24 writing image sha256:42c5c6cfa9f51a59c996f1918e89965538835ae9f39a3be7b8b47dc75594e98b done
+#24 naming to docker.io/library/basketapi 0.0s done
+#24 DONE 0.2s

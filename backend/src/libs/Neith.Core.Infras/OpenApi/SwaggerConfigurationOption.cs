@@ -1,11 +1,13 @@
 using Asp.Versioning.ApiExplorer;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Catalog.Api.ServiceRegistration.Api;
+namespace Neith.Core.Infras.OpenApi;
 
 public class SwaggerConfigurationsOptions : IConfigureOptions<SwaggerGenOptions>
 {

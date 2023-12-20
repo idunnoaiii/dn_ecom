@@ -1,13 +1,9 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using HealthChecks.UI.Client;
 using Catalog.Api.ServiceRegistration.Api;
 using Catalog.Api.ServiceRegistration.Service;
 
 
 using static Catalog.Api.ServiceRegistration.Api.ApiServiceExtension;
-using Catalog.Api.Endpoints.V1_0;
-using Catalog.Api.Endpoints.V2_0;
 using Catalog.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);

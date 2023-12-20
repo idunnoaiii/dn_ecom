@@ -69,13 +69,4 @@ public static class ProductEndpoint
         return app;
     }
 
-    // private Task CreateProductAsync(HttpContext context)
-    // {
-    //     throw new NotImplementedException();
-    // }
-
-    // private async Task<Results<Ok<string>, BadRequest<string>, ProblemHttpResult>> GetAllProductsAsync(HttpContext context)
-    // {
-    //     return TypedResults.Ok("ok");
-    // }
 }
