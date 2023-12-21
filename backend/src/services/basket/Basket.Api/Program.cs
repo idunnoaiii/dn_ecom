@@ -1,12 +1,13 @@
 using Basket.Api.Api;
 using Basket.Api.Application.Repository;
+using Basket.Api.Extension;
 using Basket.Api.Repository;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Neith.Core.Infras.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.AddMapping();
 builder.AddApi();
 
 builder.Services.AddHealthChecks()
