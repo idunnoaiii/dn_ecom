@@ -2,13 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Discount service",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/backend/src/services/catalog/Catalog.Api/bin/Debug/net8.0/Catalog.Api.dll",
+            "program": "${workspaceFolder}/backend/src/services/discount/Discount.Api/bin/Debug/net8.0/Discount.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/backend/src/services/catalog/Catalog.Api",
+            "cwd": "${workspaceFolder}/backend/src/services/discount/Discount.Api",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

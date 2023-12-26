@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{562FCAF4-773E-4F55-88B9-D86190159DCA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{34D77D43-F9C4-4FAC-81CA-164468F6C025}"
+	ProjectSection(SolutionItems) = preProject
+		src\services\catalog\Dockerfile = src\services\catalog\Dockerfile
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Api", "src\services\catalog\Catalog.Api\Catalog.Api.csproj", "{7A2A8928-D954-4194-9C60-51137E967674}"
 EndProject
@@ -16,6 +19,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Infrastructure", "src\services\catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{714E1863-0D83-4BC9-9D8F-E54E444A914D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "basket", "basket", "{5FC42FCF-D06A-41AF-B1D1-FB0C4F477348}"
+	ProjectSection(SolutionItems) = preProject
+		src\services\basket\Dockerfile = src\services\basket\Dockerfile
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Api", "src\services\basket\Basket.Api\Basket.Api.csproj", "{E1313F4B-7B23-4CDC-8020-F9FF7B15138A}"
 EndProject
@@ -24,6 +30,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neith.Core", "src\libs\Neith.Core\Neith.Core.csproj", "{44ADAAEB-DC00-451D-8929-EA06AAF811F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neith.Core.Infras", "src\libs\Neith.Core.Infras\Neith.Core.Infras.csproj", "{DBA85DB8-F616-4193-BC1E-14603D189751}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "discount", "discount", "{865C715B-F607-49BF-92AA-CA606115B912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Api", "src\services\discount\Discount.Api\Discount.Api.csproj", "{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Application", "src\services\discount\Discount.Application\Discount.Application.csproj", "{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Core", "src\services\discount\Discount.Core\Discount.Core.csproj", "{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Infrastructure", "src\services\discount\Discount.Infrastructure\Discount.Infrastructure.csproj", "{7223D488-60AD-472E-97EC-C9298E07C4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +78,22 @@ Global
 		{DBA85DB8-F616-4193-BC1E-14603D189751}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA85DB8-F616-4193-BC1E-14603D189751}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA85DB8-F616-4193-BC1E-14603D189751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34D77D43-F9C4-4FAC-81CA-164468F6C025} = {562FCAF4-773E-4F55-88B9-D86190159DCA}
@@ -73,5 +105,10 @@ Global
 		{E1313F4B-7B23-4CDC-8020-F9FF7B15138A} = {5FC42FCF-D06A-41AF-B1D1-FB0C4F477348}
 		{44ADAAEB-DC00-451D-8929-EA06AAF811F6} = {31B71DE8-9832-4AF4-B40A-CA35A635CDE4}
 		{DBA85DB8-F616-4193-BC1E-14603D189751} = {31B71DE8-9832-4AF4-B40A-CA35A635CDE4}
+		{865C715B-F607-49BF-92AA-CA606115B912} = {562FCAF4-773E-4F55-88B9-D86190159DCA}
+		{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C} = {865C715B-F607-49BF-92AA-CA606115B912}
+		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710} = {865C715B-F607-49BF-92AA-CA606115B912}
+		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603} = {865C715B-F607-49BF-92AA-CA606115B912}
+		{7223D488-60AD-472E-97EC-C9298E07C4EE} = {865C715B-F607-49BF-92AA-CA606115B912}
 	EndGlobalSection
 EndGlobal

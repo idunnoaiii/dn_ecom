@@ -6,26 +6,27 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Neith.Core.Infras.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
+{
+    builder.AddMapping();
+    builder.AddApi();
 
-builder.AddMapping();
-builder.AddApi();
+    builder.Services.AddHealthChecks()
+        .AddRedis(builder.Configuration["DatabaseSettings:ConnectionString"]!, "Redis heathcheck", HealthStatus.Degraded);
 
-builder.Services.AddHealthChecks()
-    .AddRedis(builder.Configuration["DatabaseSettings:ConnectionString"]!, "Redis heathcheck", HealthStatus.Degraded);
+    builder.Services.AddStackExchangeRedisCache(option =>
+    {
+        option.Configuration = builder.Configuration.GetValue<string>("DatabaseSettings:ConnectionString");
+    });
 
-builder.Services.AddStackExchangeRedisCache(option => {
-    option.Configuration = builder.Configuration.GetValue<string>("DatabaseSettings:ConnectionString");
-});
+    builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+}
 
-builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
 var app = builder.Build();
-
-// app.UseHttpsRedirection();
-
-app.UseApi();
-app.MapEndpoints();
-
+{
+    // app.UseHttpsRedirection();
+    app.UseApi();
+    app.MapEndpoints();
+}
 
 app.Run();
-
