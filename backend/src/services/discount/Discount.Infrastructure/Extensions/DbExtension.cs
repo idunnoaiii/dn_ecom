@@ -63,5 +63,8 @@ public static class DbExtension
             INSERT INTO Coupons (ProductName, Description, Amount) VALUES ('Adidas Quick Force Indoor Badminton Shoes', 'Shoe Discount', 500);
             INSERT INTO Coupons (ProductName, Description, Amount) VALUES ('Yonex vCore Pro 100 A Tenis Racquet (270gm, Strung)', 'Racquet Discount', 500);
         """;
+
+        command.ExecuteNonQuery();
+
     }
 }

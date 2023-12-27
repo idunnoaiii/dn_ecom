@@ -7,6 +7,12 @@ services:
 
   basketdb:
     image: redis:alpine
+      
+  discountdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
 
   catalogapi:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -21,6 +27,12 @@ services:
       context: .
       dockerfile: backend/src/services/basket/Dockerfile
 
+  discountapi:
+    image: ${DOCKER_REGISTRY-}discountapi    
+    build: 
+      context: .
+      dockerfile: backend/src/services/discount/Dockerfile
+
 
 networks:
   common:
@@ -29,3 +41,5 @@ networks:
 
 volumes:
   mongo_data:
+  postgres_data:
+  pgadmin_data:

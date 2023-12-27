@@ -32,6 +32,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neith.Core.Infras", "src\libs\Neith.Core.Infras\Neith.Core.Infras.csproj", "{DBA85DB8-F616-4193-BC1E-14603D189751}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "discount", "discount", "{865C715B-F607-49BF-92AA-CA606115B912}"
+	ProjectSection(SolutionItems) = preProject
+		src\services\discount\Dockerfile = src\services\discount\Dockerfile
+		src\services\discount\Dockerfile = src\services\discount\Dockerfile
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Api", "src\services\discount\Discount.Api\Discount.Api.csproj", "{014713D8-22BC-4B5A-A1E1-9631C1EFBD7C}"
 EndProject
