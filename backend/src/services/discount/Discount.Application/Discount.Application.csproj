@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Discount.Core\Discount.Core.csproj" />
+    <ProjectReference Include="..\..\..\libs\Neith.Core\Neith.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.59.0" />
@@ -14,6 +15,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
+    <Protobuf Include="..\..\..\libs\Neith.Core\Contracts\discount.proto" GrpcServices="Server" />
   </ItemGroup>
 </Project>

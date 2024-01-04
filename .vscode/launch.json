@@ -22,6 +22,15 @@
             }
         },
         {
+            "name": "Console",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/backend/src/presentation/console/bin/Debug/net8.0/console.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/backend/src/presentation/console"
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"

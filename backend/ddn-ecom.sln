@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -44,6 +44,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Core", "src\services\discount\Discount.Core\Discount.Core.csproj", "{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Infrastructure", "src\services\discount\Discount.Infrastructure\Discount.Infrastructure.csproj", "{7223D488-60AD-472E-97EC-C9298E07C4EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{D8220286-11C3-495F-8C4A-A43F2029436B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "console", "console", "{C6345B00-DF78-4715-A67C-CEA7081E8C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console", "src\presentation\console\console.csproj", "{758A7FDD-C198-4F7E-BE13-90D829F9DF10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +104,10 @@ Global
 		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7223D488-60AD-472E-97EC-C9298E07C4EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758A7FDD-C198-4F7E-BE13-90D829F9DF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758A7FDD-C198-4F7E-BE13-90D829F9DF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758A7FDD-C198-4F7E-BE13-90D829F9DF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758A7FDD-C198-4F7E-BE13-90D829F9DF10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34D77D43-F9C4-4FAC-81CA-164468F6C025} = {562FCAF4-773E-4F55-88B9-D86190159DCA}
@@ -114,5 +124,7 @@ Global
 		{E00E66B7-E0E7-4E8B-8E67-C4AEBDE28710} = {865C715B-F607-49BF-92AA-CA606115B912}
 		{60E1CA78-927A-44E8-B7CE-4F7A3D3E4603} = {865C715B-F607-49BF-92AA-CA606115B912}
 		{7223D488-60AD-472E-97EC-C9298E07C4EE} = {865C715B-F607-49BF-92AA-CA606115B912}
+		{C6345B00-DF78-4715-A67C-CEA7081E8C1C} = {D8220286-11C3-495F-8C4A-A43F2029436B}
+		{758A7FDD-C198-4F7E-BE13-90D829F9DF10} = {C6345B00-DF78-4715-A67C-CEA7081E8C1C}
 	EndGlobalSection
 EndGlobal
