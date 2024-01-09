@@ -4,7 +4,7 @@ namespace Order.Core.Entity;
 
 public class Order : EntityBase
 {
-    public string? UserName { get; set; }
+    public string? Username { get; set; }
     public decimal? TotalPrice { get; set; }
     
 

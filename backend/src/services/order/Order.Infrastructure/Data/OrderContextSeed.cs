@@ -20,7 +20,7 @@ public class OrderContextSeed
     private static OrderEntity[] GetOrders() => [
             new OrderEntity
             {
-                UserName = "neith",
+                Username = "neith",
                 FirstName = "neith",
                 Lastname = "Q. Nguyen",
                 EmailAddress = "neith@gmail.com",

@@ -7,7 +7,7 @@ public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderComm
 {
     public CheckoutOrderCommandValidator()
     {
-        RuleFor(x => x.UserName)
+        RuleFor(x => x.Username)
             .NotEmpty()
             .WithMessage("{Username} is required") 
             .NotNull()

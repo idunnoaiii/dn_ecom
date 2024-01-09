@@ -19,7 +19,7 @@ public class GetOrderListQueryHandler : IRequestHandler<GetOrderListQuery, List<
 
     public async Task<List<OrderResponse>> Handle(GetOrderListQuery request, CancellationToken cancellationToken)
     {
-        var orderList = await _orderRepository.GetByUserName(request.UserName!);
+        var orderList = await _orderRepository.GetByUsername(request.Username!);
         return _mapper.Map<List<OrderResponse>>(orderList);
     }
 }

@@ -3,7 +3,7 @@ namespace Order.Application.Response;
 public class OrderResponse
 {
     public int Id { get; set; }
-    public string? UserName { get; set; }
+    public string? Username { get; set; }
     public decimal? TotalPrice { get; set; }
 
 

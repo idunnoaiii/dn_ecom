@@ -7,10 +7,10 @@ namespace Order.Infrastructure.Repository;
 
 public class OrderRepository(OrderContext context) : RepositoryBase<OrderEntity>(context), IOrderRepository
 {
-    public async Task<IEnumerable<OrderEntity>> GetByUserName(string userName)
+    public async Task<IEnumerable<OrderEntity>> GetByUsername(string username)
     {
         var orderList = await _context.Orders
-            .Where(x => x.UserName == userName)
+            .Where(x => x.Username == username)
             .ToListAsync();
         
         return orderList;

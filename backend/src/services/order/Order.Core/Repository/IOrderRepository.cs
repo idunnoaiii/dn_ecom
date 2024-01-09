@@ -8,5 +8,5 @@ using Entity;
 
 public interface IOrderRepository : IRepository<Order>
 {
-    Task<IEnumerable<Order>> GetByUserName(string userName);
+    Task<IEnumerable<Order>> GetByUsername(string username);
 }

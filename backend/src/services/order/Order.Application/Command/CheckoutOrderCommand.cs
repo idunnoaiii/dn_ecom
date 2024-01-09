@@ -4,7 +4,7 @@ namespace Order.Application.Command;
 
 public class CheckoutOrderCommand : IRequest<int>
 {
-    public string? UserName { get; set; }
+    public string? Username { get; set; }
     public decimal? TotalPrice { get; set; }
 
 

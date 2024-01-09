@@ -5,5 +5,5 @@ namespace Order.Application.Query;
 
 public class GetOrderListQuery : IRequest<List<OrderResponse>>
 {
-    public string? UserName { get; set; }
+    public string? Username { get; set; }
 }
