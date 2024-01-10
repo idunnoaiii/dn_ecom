@@ -10,6 +10,9 @@ services:
       
   discountdb:
     image: postgres
+      
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
 
   pgadmin:
     image: dpage/pgadmin4
@@ -19,7 +22,6 @@ services:
     build: 
       context: .
       dockerfile: backend/src/services/catalog/Dockerfile
-
 
   basketapi:
     image: ${DOCKER_REGISTRY-}basketapi    
@@ -32,6 +34,12 @@ services:
     build: 
       context: .
       dockerfile: backend/src/services/discount/Dockerfile
+
+  orderapi:
+    image: ${DOCKER_REGISTRY-}orderapi
+    build: 
+      context: .
+      dockerfile: backend/src/services/order/Dockerfile
 
 
 networks:

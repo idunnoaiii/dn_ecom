@@ -34,6 +34,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  orderdb:
+    container_name: orderdb
+    environment:
+      - SA_PASSWORD=P@ssword1
+      - ACCEPT_EULA=Y
+    restart: always
+    ports:
+      - "1433:1433"
+    networks:
+      - common
+
   pgadmin:
     container_name: pgadmin
     environment:
@@ -83,6 +94,17 @@ services:
     networks:
       - common
 
+  orderapi:
+    container_name: order.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings__OrderingConnectionString=Server=orderdb,1433;Database=OrderDb;User Id=sa;Password=P@ssword1;TrustServerCertificate=true"
+    depends_on:
+      - orderdb
+    ports:
+      - "9003:80"
+    networks:
+      - common
 
 networks:
   common:
@@ -91,3 +113,5 @@ networks:
 
 volumes:
   mongo_data:
+  postgres_data:
+  pgadmin_data:
