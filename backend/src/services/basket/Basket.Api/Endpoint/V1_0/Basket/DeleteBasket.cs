@@ -1,12 +1,12 @@
 using Basket.Api.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Basket.Api.Api.V1_0.Basket;
+namespace Basket.Api.Endpoint.V1_0.Basket;
 
-public static class DeleteBasketExt
+public static class DeleteBasket
 {
 
-    public static IEndpointRouteBuilder DeleteBasket(this IEndpointRouteBuilder builder)
+    public static IEndpointRouteBuilder AddDeleteBasket(this IEndpointRouteBuilder builder)
     {
         builder.MapDelete("/{username}",
         async (

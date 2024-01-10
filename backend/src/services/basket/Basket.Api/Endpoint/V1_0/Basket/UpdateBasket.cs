@@ -5,11 +5,11 @@ using Basket.Api.Response;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Basket.Api.Api.V1_0.Basket;
+namespace Basket.Api.Endpoint.V1_0.Basket;
 
-public static class UpdateBasketExt
+public static class UpdateBasket
 {
-    public static IEndpointRouteBuilder UpdateBasket(this IEndpointRouteBuilder builder)
+    public static IEndpointRouteBuilder AddUpdateBasket(this IEndpointRouteBuilder builder)
     {
         builder.MapPost("/{username}", async (
             string username,

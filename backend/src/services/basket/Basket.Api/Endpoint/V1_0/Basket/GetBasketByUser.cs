@@ -3,11 +3,11 @@ using Basket.Api.Response;
 using Mapster;
 using MapsterMapper;
 
-namespace Basket.Api.Api.V1_0.Basket;
+namespace Basket.Api.Endpoint.V1_0.Basket;
 
-public static class GetBasketByUserExt
+public static class GetBasketByUser
 {
-    public static IEndpointRouteBuilder GetBasketByUser(this IEndpointRouteBuilder builder)
+    public static IEndpointRouteBuilder AddGetBasketByUser(this IEndpointRouteBuilder builder)
     {
         builder.MapGet("by/username/{username}",
         async (

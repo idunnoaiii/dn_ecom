@@ -10,6 +10,7 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.59.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -17,7 +18,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\Neith.Core.Infras\Neith.Core.Infras.csproj" />
-    <ProjectReference Include="..\..\..\libs\Neith.Core\Neith.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Protobuf Include="..\..\..\libs\Neith.Core\Contracts\discount.proto" GrpcServices="Client">
