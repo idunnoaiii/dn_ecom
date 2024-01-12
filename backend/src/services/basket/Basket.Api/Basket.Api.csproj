@@ -20,6 +20,9 @@
     <ProjectReference Include="..\..\..\libs\Neith.Core.Infras\Neith.Core.Infras.csproj" />
   </ItemGroup>
   <ItemGroup>
+      <Using Include="MapsterMapper"></Using>
+  </ItemGroup>
+  <ItemGroup>
     <Protobuf Include="..\..\..\libs\Neith.Core\Contracts\discount.proto" GrpcServices="Client">
       <Link>Protos\discount.proto</Link>
     </Protobuf>

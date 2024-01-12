@@ -7,8 +7,6 @@ using MassTransit;
 
 namespace Basket.Api.Endpoint.V1_0.Basket;
 
-
-
 public static class CheckoutBasket
 {
     public static IEndpointRouteBuilder AddCheckoutBasket(this IEndpointRouteBuilder builder) 

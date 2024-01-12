@@ -1,4 +1,4 @@
-using Basket.Api.Api;
+using Basket.Api.Endpoint;
 using Basket.Api.Application.GrpcService;
 using Basket.Api.Application.Repository;
 using Basket.Api.Extension;
