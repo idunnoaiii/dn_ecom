@@ -78,21 +78,6 @@ services:
     networks:
       - common
 
-  basketapi:
-    container_name: basket.api
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings__ConnectionString=basketdb:6379"
-      - "GrpcSettings__DiscountUrl=discountapi:9002"
-      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
-    depends_on:
-      - basketdb
-      - rabbitmq
-    ports:
-      - 9001:80
-    networks:
-      - common
-
   discountapi:
     container_name: discount.api
     environment:
@@ -102,6 +87,22 @@ services:
       - discountdb
     ports:
       - "9002:80"
+    networks:
+      - common
+
+  basketapi:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=basketdb:6379"
+      - "GrpcSettings__DiscountUrl=http://discountapi"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+    depends_on:
+      - basketdb
+      - rabbitmq
+      - discountapi
+    ports:
+      - 9001:80
     networks:
       - common
 

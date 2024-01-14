@@ -47,7 +47,7 @@ public class DiscountRepository : IDiscountRepository
         using NpgsqlConnection con = new(_databaseSetting.ConnectionString);
 
         var affected = await con.ExecuteAsync("""
-            INSERT INTO Coupons (ProductName, Amount, Description) VALUES (@ProductName, @Amount, Description)
+            INSERT INTO Coupons (ProductName, Amount, Description) VALUES (@ProductName, @Amount, @Description)
         """,
         coupon);
 
