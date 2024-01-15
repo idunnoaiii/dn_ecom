@@ -6,26 +6,32 @@ using Basket.Api.Repository;
 using Discount.Grpc.Protos;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Neith.Core.Infras.OpenApi;
+using Neith.Core.Infras.EventBus;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    
+    var configuration = builder.Configuration;
+
     builder.AddMapping();
     builder.AddApi();
 
     builder.Services.AddHealthChecks()
-        .AddRedis(builder.Configuration["DatabaseSettings:ConnectionString"]!, "Redis heathcheck", HealthStatus.Degraded);
+        .AddRedis(configuration["DatabaseSettings:ConnectionString"]!, "Redis heathcheck", HealthStatus.Degraded);
 
     builder.Services.AddStackExchangeRedisCache(option =>
     {
-        option.Configuration = builder.Configuration.GetValue<string>("DatabaseSettings:ConnectionString");
+        option.Configuration = configuration.GetValue<string>("DatabaseSettings:ConnectionString");
     });
 
     builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o =>
-        o.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!)
+        o.Address = new Uri(configuration["GrpcSettings:DiscountUrl"]!)
     );
 
     builder.Services.AddScoped<IBasketRepository, BasketRepository>();
     builder.Services.AddScoped<DiscountGrpcService>();
+    
+    builder.Services.AddEventBus(configuration);
 }
 
 
