@@ -25,7 +25,6 @@ public static class DbExtension
 
             RunMigrate(dbSettingOption.Value);
 
-
             logger.LogInformation("DB migration completed");
         }
         catch (Exception ex)
